@@ -8,11 +8,11 @@ const logable = fields => {
 
   for (const key in fields) {
     Object.defineProperty(Logable.prototype, key, {
-      get: function() {
+      get() {
         console.log('Reading key:', key);
         return this.values[key];
       },
-      set: function(value) {
+      set(value) {
         console.log('Writing key:', key, value);
         const def = fields[key];
         const valid = (

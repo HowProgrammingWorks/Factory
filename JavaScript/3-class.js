@@ -1,15 +1,16 @@
 'use strict';
 
 const logable = fields => class Logable {
+
   constructor(data) {
     this.values = data;
     for (const key in fields) {
       Object.defineProperty(Logable.prototype, key, {
-        get: function() {
+        get() {
           console.log('Reading key:', key);
           return this.values[key];
         },
-        set: function(value) {
+        set(value) {
           console.log('Writing key:', key, value);
           const def = fields[key];
           const valid = (
@@ -22,6 +23,7 @@ const logable = fields => class Logable {
       });
     }
   }
+
   toString() {
     let result = this.constructor.name + '\t';
     for (const key in fields) {
@@ -29,6 +31,7 @@ const logable = fields => class Logable {
     }
     return result;
   }
+
 };
 
 // Usage
