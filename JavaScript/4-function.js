@@ -8,7 +8,7 @@ const logger = (level = 'info') => {
     info: '\x1b[1;37m'
   };
 
-  const color = colors[level] || colors.info;
+  const color = colors[level];
 
   return s => {
     const date = new Date().toISOString();
