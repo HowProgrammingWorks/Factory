@@ -14,7 +14,7 @@ const logable = fields => class Logable {
           console.log('Writing key:', key, value);
           const def = fields[key];
           const valid = (
-            typeof(value) === def.type &&
+            typeof value === def.type &&
             def.validate(value)
           );
           if (valid) this.values[key] = value;
