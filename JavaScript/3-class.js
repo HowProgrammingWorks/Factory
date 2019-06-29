@@ -1,7 +1,6 @@
 'use strict';
 
 const logable = fields => class Logable {
-
   constructor(data) {
     this.values = data;
     for (const key in fields) {
@@ -31,7 +30,6 @@ const logable = fields => class Logable {
     }
     return result;
   }
-
 };
 
 // Usage
