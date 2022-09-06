@@ -1,6 +1,6 @@
 'use strict';
 
-const logable = fields => class Logable {
+const logable = (fields) => class Logable {
   constructor(data) {
     this.values = data;
     for (const key in fields) {
@@ -35,8 +35,8 @@ const logable = fields => class Logable {
 // Usage
 
 const Person = logable({
-  name: { type: 'string', validate: name => name.length > 0 },
-  born: { type: 'number', validate: born => !(born % 1) },
+  name: { type: 'string', validate: (name) => name.length > 0 },
+  born: { type: 'number', validate: (born) => !(born % 1) },
 });
 
 const p1 = new Person({ name: 'Marcus Aurelius', born: 121 });

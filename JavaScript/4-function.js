@@ -8,7 +8,7 @@ const colors = {
 
 const logger = (level = 'info') => {
   const color = colors[level];
-  return s => {
+  return (s) => {
     const date = new Date().toISOString();
     console.log(color + date + '\t' + s);
   };

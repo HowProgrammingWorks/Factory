@@ -9,7 +9,7 @@ const userFactory2 = (name, group, email) => ({
 });
 
 const userFactory3 = (name, group, email) => {
-  name, group, email
+  name, group, email;
 };
 
 const userFactory4 = (name, group, email) => (
