@@ -15,7 +15,7 @@ const logger = (level = 'info') => {
 };
 
 const warning = logger('warning');
-warning('Hello');
+warning('Hello warning');
 
 const info = logger('info');
-info('Hello error');
+info('Hello info');
