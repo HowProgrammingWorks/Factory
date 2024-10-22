@@ -15,13 +15,13 @@ const logable = (fields) => {
       set(value) {
         console.log('Writing key:', key, value);
         const def = fields[key];
-        const valid = (
+        const valid =
           typeof value === def.type &&
           def.validate(value)
-        );
+        ;
         if (valid) this.values[key] = value;
         else console.log('Validation failed:', key, value);
-      }
+      },
     });
   }
 

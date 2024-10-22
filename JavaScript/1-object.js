@@ -5,7 +5,7 @@ function userFactory1(name, group, email) {
 }
 
 const userFactory2 = (name, group, email) => ({
-  name, group, email
+  name, group, email,
 });
 
 const userFactory3 = (name, group, email) => {
