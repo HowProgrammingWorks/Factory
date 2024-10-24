@@ -1,7 +1,6 @@
 'use strict';
 
 const logable = (fields) => {
-
   function Logable(data) {
     this.values = data;
   }
@@ -15,17 +14,14 @@ const logable = (fields) => {
       set(value) {
         console.log('Writing key:', key, value);
         const def = fields[key];
-        const valid =
-          typeof value === def.type &&
-          def.validate(value)
-        ;
+        const valid = typeof value === def.type && def.validate(value);
         if (valid) this.values[key] = value;
         else console.log('Validation failed:', key, value);
       },
     });
   }
 
-  Logable.prototype.toString = function() {
+  Logable.prototype.toString = function () {
     let result = this.constructor.name + ': ';
     for (const key in fields) {
       result += this.values[key] + ' ';
@@ -34,7 +30,6 @@ const logable = (fields) => {
   };
 
   return Logable;
-
 };
 
 // Usage

@@ -6,7 +6,10 @@ class Person {
   }
 }
 
-const factorify = (Category) => (...args) => new Category(...args);
+const factorify =
+  (Category) =>
+  (...args) =>
+    new Category(...args);
 
 // Usage
 
