@@ -7,9 +7,9 @@ class Person {
 }
 
 const factorify =
-  (Category) =>
+  (Entity) =>
   (...args) =>
-    new Category(...args);
+    new Entity(...args);
 
 // Usage
 

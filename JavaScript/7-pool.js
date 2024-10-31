@@ -3,8 +3,7 @@
 const POOL_SIZE = 1000;
 
 const pool = (factory) => {
-  const instance = factory();
-  const items = new Array(POOL_SIZE).fill(instance);
+  const items = new Array(POOL_SIZE).fill(null).map(() => factory());
   return (item) => {
     let res = null;
     if (item) {
@@ -21,9 +20,9 @@ const pool = (factory) => {
 // Usage
 
 const factory = () => new Array(1000).fill(0);
-const arrays = pool(factory);
+const arrayPool = pool(factory);
 
-const a1 = arrays();
+const a1 = arrayPool();
 const b1 = a1.map((x, i) => i).reduce((x, y) => x + y);
 console.log(b1);
 
