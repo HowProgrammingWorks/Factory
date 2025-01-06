@@ -5,7 +5,7 @@ const logable = (fields) =>
     constructor(data) {
       this.values = data;
       for (const key in fields) {
-        Object.defineProperty(Logable.prototype, key, {
+        Object.defineProperty(this, key, {
           get() {
             console.log('Reading key:', key);
             return this.values[key];

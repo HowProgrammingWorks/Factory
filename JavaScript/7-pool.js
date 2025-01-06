@@ -26,14 +26,14 @@ const a1 = arrayPool();
 const b1 = a1.map((x, i) => i).reduce((x, y) => x + y);
 console.log(b1);
 
-const a2 = arrays();
+const a2 = arrayPool();
 const b2 = a2.map((x, i) => i).reduce((x, y) => x + y);
 console.log(b2);
 
-arrays(a1);
-arrays(a2);
+arrayPool(a1);
+arrayPool(a2);
 
-const a3 = arrays();
+const a3 = arrayPool();
 const b3 = a3.map((x, i) => i).reduce((x, y) => x + y);
 console.log(b3);
 
