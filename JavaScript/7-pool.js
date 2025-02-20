@@ -3,18 +3,20 @@
 const POOL_SIZE = 1000;
 
 const pool = (factory) => {
-  const items = new Array(POOL_SIZE).fill(null).map(() => factory());
-  return (item) => {
-    let res = null;
-    if (item) {
-      items.push(item);
-      console.log('Recycle item, count =', items.length);
-    } else {
-      res = items.pop() || factory();
-      console.log('Get from pool, count =', items.length);
-    }
-    return res;
+  const instances = new Array(POOL_SIZE).fill(null).map(factory);
+
+  const acquire = () => {
+    const instance = instances.pop() || factory();
+    console.log('Get from pool, count =', instances.length);
+    return instance;
   };
+
+  const release = (instance) => {
+    instances.push(instance);
+    console.log('Recycle item, count =', instances.length);
+  };
+
+  return { acquire, release };
 };
 
 // Usage
@@ -22,18 +24,18 @@ const pool = (factory) => {
 const factory = () => new Array(1000).fill(0);
 const arrayPool = pool(factory);
 
-const a1 = arrayPool();
+const a1 = arrayPool.acquire();
 const b1 = a1.map((x, i) => i).reduce((x, y) => x + y);
 console.log(b1);
 
-const a2 = arrays();
+const a2 = factory();
 const b2 = a2.map((x, i) => i).reduce((x, y) => x + y);
 console.log(b2);
 
-arrays(a1);
-arrays(a2);
+factory(a1);
+factory(a2);
 
-const a3 = arrays();
+const a3 = factory();
 const b3 = a3.map((x, i) => i).reduce((x, y) => x + y);
 console.log(b3);
 
