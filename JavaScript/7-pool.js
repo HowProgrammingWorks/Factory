@@ -2,7 +2,7 @@
 
 const POOL_SIZE = 1000;
 
-const pool = (factory) => {
+const poolify = (factory) => {
   const instances = new Array(POOL_SIZE).fill(null).map(factory);
 
   const acquire = () => {
@@ -22,7 +22,7 @@ const pool = (factory) => {
 // Usage
 
 const factory = () => new Array(1000).fill(0);
-const arrayPool = pool(factory);
+const arrayPool = poolify(factory);
 
 const a1 = arrayPool.acquire();
 const b1 = a1.map((x, i) => i).reduce((x, y) => x + y);
